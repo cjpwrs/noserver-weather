@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<body ng-controller="weatherCtrl">
+<nav class="main-nav">
+    <div class="info-header">
+        Weather App
+    </div>
+    <div class="link-header">
+        <a ui-sref="current">Current Condition</a>
+        <a ui-sref="hourly">Hourly Forecast</a>
+        <a ui-sref="forecast">10 Day Forecast</a>
+    </div>
+
+
+
+    <input ng-model="searchInfo" type="text" placeholder="search by city or zip">
+    <a ui-sref="current({searchCriteria:searchInfo})">Search</a>
+    {{searchInfo}}
+</nav>
+<section class="main-section">
+    <div class="main-content">
+        <ui-view></ui-view>
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.min.js"></script>
+<script src="./js/app.js"></script>
+<script src="js/weatherCtrl.js"></script>
+<script src="js/weatherService.js"></script>
+<script src="js/backgroundDirective.js"></script>
+<script src="js/searchDirective.js"></script>
+</body>
+</html>

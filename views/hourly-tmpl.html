@@ -1,0 +1,13 @@
+<search-directive class="search-bar"></search-directive>
+
+<div class="hourly-forecast" ng-model="weatherData" ng-repeat="hour in weatherData.hourly_forecast">
+    <div class="weather-gif">
+        <background-directive condition="hour.condition" time="hour.FCTTIME.hour"></background-directive>
+    </div>
+        <h2 class="hourly-timestamp">{{hour.FCTTIME.civil}}</h2>
+        <div class="weather-data">
+            <h2>{{hour.temp.english}} degrees</h2>
+            <h2>{{hour.condition}}</h2>
+        </div>
+
+</div>
