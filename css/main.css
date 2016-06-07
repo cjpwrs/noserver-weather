@@ -206,31 +206,22 @@
 .option-holder {
   border-radius: 5px;
   background: #fff;
-  width: 250px;
+  width: 200px;
   margin: auto; }
 
 .option-repeater {
+  height: 25px;
   font-size: 1rem;
   margin: auto;
-  width: 250px;
+  width: 200px;
   background: #fff;
   color: #000;
   overflow: scroll;
-  border-radius: 5px; }
+  border-radius: 2px; }
 
 .option-repeater:hover {
   background: lightgreen;
   cursor: pointer; }
-
-#form {
-  margin-left: 50px;
-  width: 500px; }
-
-.indent {
-  margin-left: 50px; }
-
-.move-down {
-  margin-top: 100px; }
 
 @media (max-width: 1200px) {
   .ten-day-holder {

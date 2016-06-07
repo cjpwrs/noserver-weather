@@ -29,6 +29,8 @@ angular.module('app').directive('backgroundDirective', function(){
                 conditionGif = 'url(http://preloaders.net/preloaders/316/Partly%20cloudy%20with%20rain.gif)';
             else if(scope.condition.toLowerCase() === 'chance of a thunderstorm')
                 conditionGif = 'url(http://preloaders.net/preloaders/309/Lightning.gif)';
+            else if(scope.condition.toLowerCase() === 'thunderstorm')
+                conditionGif = 'url(http://preloaders.net/preloaders/309/Lightning.gif)';
             else if(scope.condition.toLowerCase() === 'rain')
                 conditionGif = 'url(http://preloaders.net/preloaders/311/Raining.gif)';
             else

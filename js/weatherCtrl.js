@@ -77,7 +77,7 @@ angular.module('app').controller('weatherCtrl', function($scope, weatherService,
             sendData($scope.tenDayWeatherData, $scope.currentWeatherData, $scope.weatherData);
             console.log($scope.tenDayWeatherData);
             $scope.searchCriteria = '';
-            $scope.searchString = '';
+            console.log("finished getting weather data");
             $scope.citiesArr = [];
             $state.go('hourly');
         })
@@ -88,8 +88,5 @@ angular.module('app').controller('weatherCtrl', function($scope, weatherService,
             $scope.getW($scope.searchCriteria);
         }
     }
-    //$scope.getW(98374);
-    //$scope.getWeather();
-    //$scope.getCurrentCondition();
-    //$scope.get10DayForecast();
+
 })
