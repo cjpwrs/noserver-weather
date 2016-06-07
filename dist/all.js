@@ -269,10 +269,4 @@ angular.module('app').service('weatherService', function ($http, $q) {
             console.log("Geolocation is not supported by this browser.");
         }
     };
-    /* this.showPosition = function(position){
-         var combined = position.coords.latitude+','+position.coords.longitude;
-         this.getW(combined);
-         console.log("Latitude: " + position.coords.latitude +
-             "Longitude: " + position.coords.longitude);
-     }*/
 });
