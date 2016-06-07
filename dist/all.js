@@ -60,7 +60,7 @@ angular.module('app').directive('loading', function () {
     return {
         restrict: 'E',
         replace: true,
-        template: '<div class="loading fade" ng-show="loading"><h2 class="fade">Hold your horses...</h2><img src="./img/loading.gif"/></div>',
+        template: '<div class="loading fade" ng-show="loading"><img src="./img/loading.gif"/></div>',
         /*link: function (scope, element, attr) {
             scope.$watch('loading', function (val) {
                 if (val)

@@ -149,20 +149,21 @@
   color: blue; }
 
 .loading {
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   position: absolute;
   margin: auto;
-  text-align: center; }
+  text-align: center;
+  background: #000;
+  opacity: .8; }
   .loading h2 {
     color: #19DCA4;
     font-size: 1.6rem; }
   .loading img {
-    height: 90%;
-    width: 90%;
+    height: 40%;
+    width: 40%;
     margin: auto; }
 
 .fade.ng-hide {
