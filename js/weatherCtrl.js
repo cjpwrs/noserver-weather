@@ -10,28 +10,39 @@ angular.module('app').controller('weatherCtrl', function($scope, weatherService,
     $scope.weatherData = weatherService.weatherData;
     $scope.currentWeatherData = weatherService.currentWeatherData;
     $scope.tenDayWeatherData = weatherService.tenDayWeatherData;
+    $scope.showSearch = false;
+    //$scope.searchString = 'fortaleza';
+
+
+
+
+
+
+
+
+
+
 
 
     $scope.getLocation = function() {
-
-        //$scope.loading = true;
         $scope.$emit('LOAD')
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
                 console.log(position.coords.latitude + ',' + position.coords.longitude)
                 $scope.curW(position.coords.latitude + ',' + position.coords.longitude);
-                //$scope.loading = false;
-                //console.log($scope.loading);
                 $scope.$emit('UNLOAD')
-                //$state.go('hourly');
-
             });
         } else {
             console.log("Geolocation is not supported by this browser.");
         }
     }
 
-    //$scope.getLocation();
+    $scope.useLocation = function(string){
+            $scope.searchCriteria = string;
+            console.log(string);
+
+    }
+
 
     var sendData = function(ten, cur, hour){
         weatherService.storeData(ten, cur, hour);
@@ -40,11 +51,12 @@ angular.module('app').controller('weatherCtrl', function($scope, weatherService,
     $scope.getCorrect = function(search){
         weatherService.getCorrect(search)
             .then(function(response){
-                console.log('Cities array' + $scope.citiesArr);
-                $scope.citiesArr = response.data.RESULTS;
+
+                $scope.citiesArr = response;
+                console.log($scope.citiesArr);
             })
     }
-    $scope.getCorrect('Test');
+    $scope.getCorrect($scope.searchString);
     $scope.curW = function(search){
         weatherService.getW(search).then(function(response){
             console.log("This is the response:" + response);
@@ -64,12 +76,17 @@ angular.module('app').controller('weatherCtrl', function($scope, weatherService,
             $scope.weatherData = response.weatherData;
             sendData($scope.tenDayWeatherData, $scope.currentWeatherData, $scope.weatherData);
             console.log($scope.tenDayWeatherData);
+            $scope.searchCriteria = '';
+            $scope.searchString = '';
+            $scope.citiesArr = [];
+            $state.go('hourly');
         })
     }
 
     $scope.enterPressed = function(keyEvent) {
-        if (keyEvent.which === 13)
+        if (keyEvent.which === 13) {
             $scope.getW($scope.searchCriteria);
+        }
     }
     //$scope.getW(98374);
     //$scope.getWeather();

@@ -1,5 +1,13 @@
 <div class="search-bar">
-    <input ng-model="searchCriteria" ng-keypress="enterPressed($event)" type="text" placeholder="search by city or zip">
-    <!--<a ui-sref="current({searchCriteria:searchCriteria})">Search</a>-->
-    <!--<a ng-click="getW(searchCriteria)" ng-keypress="enterPressed($event)">Search</a>-->
+    <form ng-submit="getW(searchCriteria)">
+    <input ng-autocomplete class="searchBox" ng-model="searchCriteria" ng-change="getCorrect(searchCriteria)" type="text" results=5 placeholder="search by city or zip" showsearch="showSearch">
+    </form>
+    </div>
+    <ul class="option-holder" ng-show="showSearch">
+        <li class="option-repeater" ng-repeat="city in citiesArr" ng-model="searchOption" ng-click="getW(city.description)">
+            {{city.description}}
+        </li>
+    </ul>
+
+
 </div>

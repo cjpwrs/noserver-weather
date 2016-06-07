@@ -98,7 +98,7 @@
   text-align: center;
   width: calc(100%/10);
   float: left;
-  height: 55vh;
+  height: 350px;
   border: solid black 2px;
   border-radius: 5px; }
 
@@ -201,6 +201,35 @@
   width: 120px; }
   .weather-gif-current img {
     width: 100%; }
+
+.option-holder {
+  border-radius: 5px;
+  background: #fff;
+  width: 250px;
+  margin: auto; }
+
+.option-repeater {
+  font-size: 1rem;
+  margin: auto;
+  width: 250px;
+  background: #fff;
+  color: #000;
+  overflow: scroll;
+  border-radius: 5px; }
+
+.option-repeater:hover {
+  background: lightgreen;
+  cursor: pointer; }
+
+#form {
+  margin-left: 50px;
+  width: 500px; }
+
+.indent {
+  margin-left: 50px; }
+
+.move-down {
+  margin-top: 100px; }
 
 @media (max-width: 1200px) {
   .ten-day-holder {

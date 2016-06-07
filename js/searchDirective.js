@@ -7,8 +7,10 @@ angular.module('app').directive('searchDirective', function(){
         templateUrl: './views/searchBar.html',
         //template: '<input ng-model="searchCriteria" type="text" placeholder="search by city or zip">' +
         //'<a ui-sref="current({searchCriteria:searchCriteria})">Search</a>',
-        //scope: {
-        //},
+        // scope: {
+        //     options: '='
+        // },
         controller: 'weatherCtrl'
+        
     }
 })

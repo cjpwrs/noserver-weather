@@ -1,16 +1,16 @@
 <search-directive class="search-bar"></search-directive>
 <div class="ten-day-holder">
     <h2 ng-model="currentWeatherData" class="location-name">{{currentWeatherData.display_location.full}}</h2>
-<div class="tenDay-forecast" ng-model="tenDayWeatherData" ng-repeat="day in tenDayWeatherData">
-        <h2 class="day-timestamp">{{day.date.weekday_short}}</h2>
-        <h2 class="day-name">{{day.date.monthname}} {{day.date.day}}</h2>
-        <div class="weather-data">
-            <h2 class="high">High {{day.high.fahrenheit}}&#8457</h2>
-            <h2 class="low">Low {{day.low.fahrenheit}}&#8457</h2>
-        </div>
-        <div class="weather-gif-ten">
-            <background-directive condition="{{day.conditions}}" time=12></background-directive>
-        </div>
-        <h2>{{day.conditions}}</h2>
-</div>
+    <div class="tenDay-forecast" ng-model="tenDayWeatherData" ng-repeat="day in tenDayWeatherData">
+            <h2 class="day-timestamp">{{day.date.weekday_short}}</h2>
+            <h2 class="day-name">{{day.date.monthname}} {{day.date.day}}</h2>
+            <div class="weather-data">
+                <h2 class="high">High {{day.high.fahrenheit}}&#8457</h2>
+                <h2 class="low">Low {{day.low.fahrenheit}}&#8457</h2>
+            </div>
+            <div class="weather-gif-ten">
+                <background-directive condition="{{day.conditions}}" time=12></background-directive>
+            </div>
+            <h2>{{day.conditions}}</h2>
+    </div>
 </div>
