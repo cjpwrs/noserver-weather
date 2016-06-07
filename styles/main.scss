@@ -1,14 +1,14 @@
 
 .main-nav {
     height: 100px;
-    background: #1CEAF4;
-
+    color: #fff;
+    background: url('http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/05/purple-nebula.jpg');
     a {
         color: #fff;
         text-decoration: none;
-        font-size: 1.3em;
-        margin-left: 20px;
+        font-size: 1.2em;
     }
+
 }
 
 .info-header {
@@ -27,26 +27,64 @@
 
     background: #19DCA4;
 
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.3em;
+        margin-left: 20px;
+    }
+    a:hover{
+        color: #36235B;
+        font-size: 1.5rem;
+    }
+
+}
+
+.home-info {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
 }
 
 .main-section {
-    background: #1CEAF4;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: url('http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/05/purple-nebula.jpg') center;
     height: 100vh;
     overflow: scroll;
 }
 
 .main-content {
+    padding-top: 25px;
+    padding-bottom: 25px;
     width: 70%;
     margin: auto;
     background: #fff;
+    background-color: rgba(255,255,255, .4);
 }
 
 .hourly-forecast {
     height:80px;
-    width:60%;
+    width:45%;
     margin: auto;
     border-radius: 5px;
 
+    
+    img {
+        float: right;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+
+}
+.hourly-forecast:nth-child(odd){
+    background: rgba(25, 220, 164, .5);
+}
+
+.hourly-forecast:nth-child(even){
+    background: #19DCA4;
 }
 
 .weather-background {
@@ -65,30 +103,38 @@
     width: 70%;
     height: 40px;
     margin: auto;
-    margin-top: 10px;
-    background: #fff;
-    opacity: .9;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .search-bar {
     margin:auto;
-    background: white;
+    margin-top: 15px;
     text-align: center;
 
 
     input{
-        height: 25px;
-        width: 150px;
+        height: 40px;
+        width: 200px;
         border-radius: 5px;
         border: solid;
     }
 }
 
 .tenDay-forecast {
+    text-align: center;
     width: calc(100%/10);
     float: left;
-    height: 70vh;
-    background: pink;
+    height: 55vh;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+.tenDay-forecast:nth-child(odd){
+    background: #19DCA4;
+}
+
+.tenDay-forecast:nth-child(even){
+    background: rgba(25, 220, 164, .5)
 }
 
 .location-name {
@@ -101,9 +147,177 @@
     font-size: 2rem;
     width: 50%;
     margin: auto;
+    height: 60vh;
+    text-align: center;
 }
 
 .weather-gif {
+    background: inherit;
     height: 70px;
     width: 70px;
+    float: right;
+    margin-right: 18px;
+    margin-top: 5px;
+}
+
+.weather-gif-ten {
+    margin: auto;
+    margin-top: 50px;
+    height: 80px;
+    width: 80px;
+}
+
+.day-timestamp {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.day-name {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.high {
+    color: red;
+}
+
+.low {
+    color: blue;
+}
+
+.loading {
+    top: 0px;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    width: 100%;
+    position: absolute;
+    margin:auto;
+    text-align: center;
+
+    h2{
+        color: #19DCA4;
+        font-size: 1.6rem;
+    }
+
+    img {
+        height: 90%;
+        width: 90%;
+        margin: auto;
+    }
+
+}
+
+.fade.ng-hide {
+    opacity: 0;
+}
+
+.fade.ng-hide-remove,
+.fade.ng-hide-add {
+    display: block !important;
+}
+
+.fade.ng-hide-remove {
+    transition: all linear 1000ms;
+}
+
+.fade.ng-hide-add {
+    transition: all linear 500ms;
+}
+
+
+.current-location-btn {
+    height: 70px;
+    width: 300px;
+    background: #19DCA4;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.or {
+    color: #000;
+    display: block;
+    margin: auto;
+    width: 100px;
+    font-size: 2.2em;
+    border-bottom: solid black 3px;
+}
+
+.weather-gif-current {
+    margin: auto;
+    height: 120px;
+    width: 120px;
+
+    img {
+        width: 100%;
+    }
+}
+@media (max-width: 1200px){
+    .ten-day-holder {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .tenDay-forecast {
+        width: 100%;
+        position: relative;
+        height: 110px;
+        border: solid black 2px;
+        border-radius: 5px; }
+    .weather-gif-ten {
+
+        position: absolute;
+        top:5px;
+        right: 5px;
+        float: right;
+        margin: auto;
+        margin-top: 5px;
+        height: 60px;
+        width: 60px; }
+}
+
+@media (max-width: 766px){
+
+    .main-nav a {
+        font-size: 7vw; }
+
+
+    .current-location-btn {
+        height: 70px;
+        width: 80%;
+        background: #19DCA4;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1.5rem;
+        border: none; }
+
+    .main-content {
+        width: 90%;
+    }
+
+    .hourly-forecast {
+        height: 80px;
+        width: 90%;
+        margin: auto;
+        border-radius: 5px; }
+    .hourly-forecast img {
+        float: right;
+        margin-top: 15px;
+        margin-right: 15px; }
+
+    .link-header {
+
+        a {
+            font-size: 1.3rem;
+            margin-left: 20px;
+        }
+        a:hover{
+            color: #36235B;
+            font-size: 1.4rem;
+        }
+
+    }
 }

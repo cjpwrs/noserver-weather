@@ -1,7 +1,7 @@
 /**
  * Created by cjpowers on 6/1/16.
  */
-angular.module('app').controller('weatherCtrl', function($scope, weatherService, $stateParams){
+angular.module('app').controller('weatherCtrl', function($scope, weatherService, $stateParams, $state){
 
     $scope.name = 'cj';
     $scope.searchInfo = 'UT/Provo';
@@ -10,41 +10,52 @@ angular.module('app').controller('weatherCtrl', function($scope, weatherService,
     $scope.weatherData = weatherService.weatherData;
     $scope.currentWeatherData = weatherService.currentWeatherData;
     $scope.tenDayWeatherData = weatherService.tenDayWeatherData;
-    $scope.searchCriteria = 84058;
-/*
-    $scope.getWeather = function(){
-        weatherService.getWeather($stateParams.searchCriteria)
-            .then(function(response){
-                console.log("finished promise");
-                $scope.weatherData = response.data;
-                console.log($scope.weatherData);
-            })
-        console.log($scope.weatherData);
+
+
+    $scope.getLocation = function() {
+
+        //$scope.loading = true;
+        $scope.$emit('LOAD')
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position){
+                console.log(position.coords.latitude + ',' + position.coords.longitude)
+                $scope.curW(position.coords.latitude + ',' + position.coords.longitude);
+                //$scope.loading = false;
+                //console.log($scope.loading);
+                $scope.$emit('UNLOAD')
+                //$state.go('hourly');
+
+            });
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
     }
 
-    $scope.getCurrentCondition = function(){
-        weatherService.getCurrentCondition($stateParams.searchCriteria)
-            .then(function(response){
-                console.log("finished current weather promise");
-                $scope.currentWeatherData = response.data;
-                console.log($scope.currentWeatherData);
-            })
-        //console.log($scope.weatherData);
-    }
+    //$scope.getLocation();
 
-    $scope.get10DayForecast = function() {
-        weatherService.get10DayForecast($stateParams.searchCriteria)
-            .then(function(response){
-                console.log("finished 10 day forecast weather promise");
-                $scope.tenDayWeatherData = response.data.forecast.simpleforecast.forecastday;
-                console.log($scope.tenDayWeatherData);
-            })
-    }
-*/
     var sendData = function(ten, cur, hour){
         weatherService.storeData(ten, cur, hour);
     }
 
+    $scope.getCorrect = function(search){
+        weatherService.getCorrect(search)
+            .then(function(response){
+                console.log('Cities array' + $scope.citiesArr);
+                $scope.citiesArr = response.data.RESULTS;
+            })
+    }
+    $scope.getCorrect('Test');
+    $scope.curW = function(search){
+        weatherService.getW(search).then(function(response){
+            console.log("This is the response:" + response);
+            $scope.tenDayWeatherData = response.tenDayWeatherData;
+            $scope.currentWeatherData = response.currentWeatherData;
+            $scope.weatherData = response.weatherData;
+            sendData($scope.tenDayWeatherData, $scope.currentWeatherData, $scope.weatherData);
+            console.log($scope.tenDayWeatherData);
+            $state.go('hourly');
+        })
+    }
     $scope.getW = function(search){
         weatherService.getW(search).then(function(response){
             console.log("This is the response:" + response);

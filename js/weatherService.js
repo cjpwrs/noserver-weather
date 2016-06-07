@@ -42,54 +42,55 @@ angular.module('app').service('weatherService', function($http, $q){
         console.log('zip'+zip)
     }*/
 
+
+    
+
     var baseUrl = 'http://api.wunderground.com/api/';
     var byType = 'hourly/q/'
     var apiToken = '5e1f7baef1adc808/'
-    /*this.getWeather = function(search){
-        //var search = cleanSearch(searchCriteria)
-        console.log(search);
-        var cleanedUrl = baseUrl + apiToken + byType + search + '.json';
-        console.log(cleanedUrl);
-        return $http.get(cleanedUrl);
+
+    this.storeData = function(ten, cur, hour){
+        this.tenDayWeatherData = ten;
+        this.currentWeatherData = cur;
+        this.weatherData = hour;
     }
-    this.getCurrentCondition = function(search) {
-        console.log(search);
-        var cleanedUrl = baseUrl + apiToken + 'conditions/q/' + search + '.json';
-        console.log(cleanedUrl);
-        return $http.get(cleanedUrl);
+    this.getCorrect = function(search){
+        return $http.get('http://autocomplete.wunderground.com/aq?query=San%20F');
     }
-    this.get10DayForecast = function(search) {
-        console.log(search);
-        var cleanedUrl = baseUrl + apiToken + 'forecast10day/q/' + search + '.json';
-        console.log(cleanedUrl);
-        return $http.get(cleanedUrl);
+
+    this.getW = function(search){
+        var cleanedUrlHourly = baseUrl + apiToken + 'hourly/q/' + search + '.json';
+        var hourlyPromise = $http.get(cleanedUrlHourly);
+        var cleanedUrlCurrent = baseUrl + apiToken + 'conditions/q/' + search + '.json';
+        var currentPromise = $http.get(cleanedUrlCurrent);
+        var cleanedUrlForecast = baseUrl + apiToken + 'forecast10day/q/' + search + '.json';
+        var forecastPromise = $http.get(cleanedUrlForecast);
+
+        return $q.all([hourlyPromise, currentPromise, forecastPromise])
+            .then(function(response){
+
+                 return {
+                     tenDayWeatherData: response[2].data.forecast.simpleforecast.forecastday,
+                     currentWeatherData: response[1].data.current_observation,
+                     weatherData: response[0].data
+                 }
+                console.log(response);
+            })
     }
-*/
-        this.storeData = function(ten, cur, hour){
-            this.tenDayWeatherData = ten;
-            this.currentWeatherData = cur;
-            this.weatherData = hour;
+
+    this.getLocation = function() {
+        if (navigator.geolocation) {
+            return navigator.geolocation.getCurrentPosition();
+        } else {
+            console.log("Geolocation is not supported by this browser.");
         }
-
-        this.getW = function(search){
-            var cleanedUrlHourly = baseUrl + apiToken + 'hourly/q/' + search + '.json';
-            var hourlyPromise = $http.get(cleanedUrlHourly);
-            var cleanedUrlCurrent = baseUrl + apiToken + 'conditions/q/' + search + '.json';
-            var currentPromise = $http.get(cleanedUrlCurrent);
-            var cleanedUrlForecast = baseUrl + apiToken + 'forecast10day/q/' + search + '.json';
-            var forecastPromise = $http.get(cleanedUrlForecast);
-
-            return $q.all([hourlyPromise, currentPromise, forecastPromise])
-                .then(function(response){
-
-                     return {
-                         tenDayWeatherData: response[2].data.forecast.simpleforecast.forecastday,
-                         currentWeatherData: response[1].data,
-                         weatherData: response[0].data
-                     }
-                    console.log(response);
-                })
-        }
+    }
+   /* this.showPosition = function(position){
+        var combined = position.coords.latitude+','+position.coords.longitude;
+        this.getW(combined);
+        console.log("Latitude: " + position.coords.latitude +
+            "Longitude: " + position.coords.longitude);
+    }*/
 
 
 })

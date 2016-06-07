@@ -1,16 +1,17 @@
 <search-directive class="search-bar"></search-directive>
+
 <div class="current-forecast" ng-model="currentWeatherData">
-
-    <h2 class="location-name">{{currentWeatherData.current_observation.display_location.full}}</h2>
-    <div class="current-temp">
-        <background-directive condition="currentWeatherData.current_observation.weather" time=12>
-        <h2>Current Temperature: {{currentWeatherData.current_observation.temp_f}}</h2>
-        <h2>Feels like: {{currentWeatherData.current_observation.feelslike_f}}</h2>
-
-        <h2>{{currentWeatherData.current_observation.weather}}</h2>
-        </background-directive>
+    <h2 class="location-name">{{currentWeatherData.display_location.full}}</h2>
+    <div class="weather-gif-current">
+        <img ng-src={{currentWeatherData.icon_url}} alt="">
     </div>
-    <h2>Observations: {{currentWeatherData.current_observation.wind_string}}</h2>
+    <div class="current-temp">
+        <h2>{{currentWeatherData.weather}}</h2><br>
+        <h2>{{currentWeatherData.temp_f}} &#8457</h2>
+        <h2>Feels like {{currentWeatherData.feelslike_f}} &#8457</h2>
+    </div>
+    <h2>Observations: {{currentWeatherData.wind_string}}</h2>
+
 
 
 </div>
