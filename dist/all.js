@@ -78,33 +78,36 @@ angular.module('app').directive('loading', function () {
         }
     };
 });
-'use strict';
+"use strict";
 
 angular.module("app").directive('ngAutocomplete', function () {
-    return {
-
-        scope: {
-            showsearch: '='
-        },
+    /*return {
+         scope: {
+             showsearch: '='
+         },
         //controller: weatherCtrl,
-
-        link: function link(scope, element, attrs) {
-            scope.showsearch = false;
-            var search = element;
+         link: function(scope, element, attrs) {
+            //scope.showsearch = false;
+            var search =  element;
             console.log(search);
-
-            element.on('focus', function () {
-                console.log(scope.citiesArr);
-                console.log('string');
+             element.on('focus', function(){
+                //console.log(scope.citiesArr);
+                console.log('focused');
                 scope.showsearch = true;
-            });
-            element.on('blur', function () {
-                console.log(scope.citiesArr);
-                console.log('string');
+                scope.$apply();
+            })
+            element.parents().click(function(){
+                 console.log('blurred');
                 scope.showsearch = false;
-            });
+                scope.$apply();
+            })
+            element.on('blur', function(){
+                 console.log('blurred');
+                scope.showsearch = false;
+                scope.$apply();
+            })
         }
-    };
+    };*/
 });
 'use strict';
 

@@ -1,6 +1,6 @@
 <div class="search-bar">
     <form ng-submit="getW(searchCriteria)">
-    <input ng-autocomplete class="searchBox" ng-model="searchCriteria" ng-change="getCorrect(searchCriteria)" type="text" results=5 placeholder="search by city or zip" showsearch="showSearch">
+    <input auto-complete ui-items="citiesArr" class="searchBox" ng-model="searchCriteria" ng-change="getCorrect(searchCriteria)" ng-focus="getCorrect(searchCriteria)" type="text" results=5 placeholder="search by city or zip" showsearch="showSearch">
     </form>
     </div>
     <ul class="option-holder" ng-show="showSearch">
